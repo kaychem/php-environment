@@ -10,7 +10,7 @@ networks:
 services:
 
 ### PHP-FPM ##############################################
-    php-fpm:
+    php:
       build:
         context: ./php
         args:
