@@ -16,7 +16,7 @@ services:
         args:
           - PHP_VERSION=${PHP_VERSION}
       volumes:
-        - ./php-fpm/php72.ini:/usr/local/etc/php-fpm/php-fpm.ini
+        - ./php-fpm/php72.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       expose:
         - "9000"
@@ -40,7 +40,7 @@ services:
           - INSTALL_PGSQL=${PHP_WORKER_INSTALL_PGSQL}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-        - ./php-fpm-worker/supervisord.d:/etc/supervisord.d
+        - ./php-worker/supervisord.d:/etc/supervisord.d
       depends_on:
         - php-fpm
       extra_hosts:
