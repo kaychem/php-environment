@@ -1,14 +1,14 @@
-## build
+## php environment
+
+## install
 
 ```
-docker-compose build php
+cp .env.example .env
+
+docker-compose build php-fpm
 docker-compose build nginx
 docker-compose build php-worker
 docker-compose build rabbitmq
-```
 
-## run
-
-```
-docker-compose up -d  php nginx php-worker rabbitmq
+docker-compose up -d  php-fpm nginx php-worker rabbitmq
 ```

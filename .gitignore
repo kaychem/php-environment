@@ -1,3 +1,5 @@
 .env
 logs
 .idea
+nginx/sites/*.conf
+php-worker/supervisord.d/*.conf
