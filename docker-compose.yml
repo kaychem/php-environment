@@ -23,7 +23,6 @@ services:
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
         - "${PHP_SWOOLE_PORT}:9501"
-        - "${PHP_MQPQ_PORT}:5672"
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       environment:

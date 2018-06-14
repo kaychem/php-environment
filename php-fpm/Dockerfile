@@ -5,7 +5,7 @@
 #--------------------------------------------------------------------------
 #
 
-FROM bluepolaris/php72:v1.0.1
+FROM bluepolaris/php72:v1.0.2
 
 #
 #--------------------------------------------------------------------------
@@ -15,6 +15,9 @@ FROM bluepolaris/php72:v1.0.1
 
 COPY ./laravel.ini /usr/local/etc/php/conf.d
 COPY ./xlaravel.pool.conf /usr/local/etc/php-fpm.d/
+
+# Add the composer.json
+COPY ./composer.json /home/laradock/.composer/composer.json
 
 USER root
 
