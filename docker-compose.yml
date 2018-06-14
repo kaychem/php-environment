@@ -66,6 +66,26 @@ services:
       networks:
         - frontend
         - backend
+
+### tengine Server #########################################
+    tengine:
+      build:
+        context: ./tengine
+        args:
+          - PHP_UPSTREAM_CONTAINER=${TENGINE_PHP_UPSTREAM_CONTAINER}
+          - PHP_UPSTREAM_PORT=${TENGINE_PHP_UPSTREAM_PORT}
+      volumes:
+        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+        - ${TENGINE_SITES_PATH}:/usr/local/nginx/conf/conf.d
+      ports:
+        - "${NGINX_HOST_HTTP_PORT}:8080"
+        - "${NGINX_HOST_HTTPS_PORT}:4433"
+      depends_on:
+        - php-fpm
+      networks:
+        - frontend
+        - backend
+
 ### RabbitMQ #############################################
     rabbitmq:
       build: ./rabbitmq

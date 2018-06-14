@@ -2,4 +2,5 @@
 logs
 .idea
 nginx/sites/*.conf
+tengine/sites/*.conf
 php-worker/supervisord.d/*.conf
