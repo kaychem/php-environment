@@ -6,7 +6,10 @@ networks:
   backend:
     driver: ${NETWORKS_DRIVER}
 
-
+volumes:
+  elasticsearch:
+    driver: ${VOLUMES_DRIVER}
+    
 services:
 
 ### PHP-FPM ##############################################
