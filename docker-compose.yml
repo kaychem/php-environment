@@ -113,7 +113,7 @@ services:
     elasticsearch:
       build: ./elasticsearch
       volumes:
-        - ${DATA_PATH_HOST}/elasticsearch:/usr/share/elasticsearch/data
+        - elasticsearch:/usr/share/elasticsearch/data
       environment:
         - cluster.name=elasticsearch-cluster
         - bootstrap.memory_lock=true
