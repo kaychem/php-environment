@@ -16,6 +16,9 @@ FROM bluepolaris/php72:v1.0.2
 COPY ./laravel.ini /usr/local/etc/php/conf.d
 COPY ./xlaravel.pool.conf /usr/local/etc/php-fpm.d/
 
+# Copy opcache configration
+COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
 # Add the composer.json
 COPY ./composer.json /home/laradock/.composer/composer.json
 

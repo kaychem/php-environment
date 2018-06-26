@@ -12,16 +12,9 @@ FROM bluepolaris/tengine:v1.0.0
 # Final Touch
 #--------------------------------------------------------------------------
 #
-ADD ngx_user.patch /
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
-RUN cd / \
-    && mv /ngx_user.patch ./ngx_user.patch \
-    && patch ngx_user.c ngx_user.patch \
-    && rm ngx_user.patch \
+EXPOSE 80 443
 
-#COPY nginx.conf /usr/local/nginx/conf/nginx.conf
-#COPY sites/nginx.lavarel.conf.example /usr/local/nginx/conf/conf.d/default.conf
-
-CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
-
-EXPOSE 8080 443
+CMD ["nginx", "-g", "daemon off;"]
