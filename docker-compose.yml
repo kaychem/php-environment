@@ -25,6 +25,7 @@ services:
       volumes:
         - ./php-fpm/php72.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+        - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
       expose:
         - "9000"
       ports:
