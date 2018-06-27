@@ -64,6 +64,7 @@ services:
           - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+        - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
         - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
         - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
       ports:
