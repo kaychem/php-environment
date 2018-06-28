@@ -26,7 +26,7 @@ services:
         - ./php-fpm/php72.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
-        - ./php-fpm/supervisord.d:/etc/supervisord.d
+        - ./php-fpm/supervisord.d/:/etc/supervisord.d/
       expose:
         - "9000"
       ports:
