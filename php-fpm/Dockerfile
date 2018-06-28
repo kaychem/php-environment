@@ -5,7 +5,7 @@
 #--------------------------------------------------------------------------
 #
 
-FROM bluepolaris/php72:v1.0.2
+FROM bluepolaris/php72:v1.0.5
 
 #
 #--------------------------------------------------------------------------
@@ -21,6 +21,9 @@ COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 # Add the composer.json
 COPY ./composer.json /home/laradock/.composer/composer.json
+
+# Add supervisord.conf
+COPY supervisord.conf /etc/supervisord.conf
 
 USER root
 
