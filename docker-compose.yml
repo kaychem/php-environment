@@ -29,9 +29,11 @@ services:
         - ./php-fpm/supervisord.d/:/etc/supervisord.d/
       expose:
         - "9000"
+        - "9001"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
         - "${PHP_SWOOLE_PORT}:9501"
+        - "9001:9001"
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       environment:
