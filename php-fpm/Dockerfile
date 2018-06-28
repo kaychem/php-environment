@@ -38,4 +38,6 @@ WORKDIR /var/www
 
 CMD ["php-fpm"]
 
+CMD ["supervisord -c /etc/supervisord.conf"]
+
 EXPOSE 9000 9001
