@@ -36,8 +36,8 @@ RUN usermod -u 1000 www-data
 
 WORKDIR /var/www
 
-CMD ["php-fpm"]
+ENTRYPOINT ["php-fpm"]
 
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+ENTRYPOINT ["supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 
 EXPOSE 9000 9001
