@@ -32,12 +32,13 @@ RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     rm /var/log/lastlog /var/log/faillog
 
+RUN  cd /etc && touch entrypoint.sh && chmod +x /etc/entrypoint.sh
+
+RUN echo -e "#!/bin/sh \n php-fpm && supervisord -n -c /etc/supervisord.conf" > /etc/entrypoint.sh
+
 RUN usermod -u 1000 www-data
 
 WORKDIR /var/www
 
-ENTRYPOINT ["php-fpm"]
-
-ENTRYPOINT ["supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 
 EXPOSE 9000 9001

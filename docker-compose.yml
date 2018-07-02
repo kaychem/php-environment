@@ -39,6 +39,8 @@ services:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
       networks:
         - backend
+      entrypoint: /etc/entrypoint.sh
+
 
 ### PHP Worker ############################################
     php-worker:
