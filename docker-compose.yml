@@ -29,7 +29,6 @@ services:
         - ./php-fpm/supervisord.d/:/etc/supervisord.d/
       expose:
         - "9000"
-        - "9001"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
         - "${PHP_SWOOLE_PORT}:9501"
@@ -39,25 +38,8 @@ services:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
       networks:
         - backend
-      entrypoint: /etc/entrypoint.sh
+      #entrypoint: /etc/entrypoint.sh
 
-
-### PHP Worker ############################################
-    php-worker:
-      build:
-        context: ./php-worker
-        args:
-          - PHP_VERSION=${PHP_VERSION}
-          - INSTALL_PGSQL=${PHP_WORKER_INSTALL_PGSQL}
-      volumes:
-        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-        - ./php-worker/supervisord.d:/etc/supervisord.d
-      depends_on:
-        - php-fpm
-      extra_hosts:
-        - "dockerhost:${DOCKER_HOST_IP}"
-      networks:
-        - backend
 
 ### NGINX Server #########################################
     nginx:
