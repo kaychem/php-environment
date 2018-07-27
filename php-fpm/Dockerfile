@@ -34,7 +34,7 @@ RUN apt-get clean && \
 
 RUN  cd /etc && touch entrypoint.sh && chmod +x /etc/entrypoint.sh
 
-RUN echo -e "#!/bin/sh \n php-fpm && supervisord -n -c /etc/supervisord.conf" > /etc/entrypoint.sh
+CMD ["php-fpm"]
 
 RUN usermod -u 1000 www-data
 
