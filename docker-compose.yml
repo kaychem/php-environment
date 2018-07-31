@@ -58,6 +58,15 @@ services:
       ports:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
+        - "8001:8001"
+        - "8002:8002"
+        - "8003:8003"
+        - "8004:8004"
+        - "8005:8005"
+        - "8006:8006"
+        - "8007:8007"
+        - "8008:8008"
+        - "8009:8009"
       depends_on:
         - php-fpm
       networks:
@@ -77,6 +86,7 @@ services:
       ports:
         - "${NGINX_HOST_HTTP_PORT}:8080"
         - "${NGINX_HOST_HTTPS_PORT}:4433"
+        - "9901:9901"
       depends_on:
         - php-fpm
       networks:
@@ -116,6 +126,17 @@ services:
       ports:
         - "${ELASTICSEARCH_HOST_HTTP_PORT}:9200"
         - "${ELASTICSEARCH_HOST_TRANSPORT_PORT}:9300"
+      networks:
+        - frontend
+        - backend
+
+### Kibana ##############################################
+    kibana:
+      build: ./kibana
+      ports:
+        - "${KIBANA_HTTP_PORT}:5601"
+      depends_on:
+        - elasticsearch
       networks:
         - frontend
         - backend
