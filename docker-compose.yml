@@ -58,15 +58,6 @@ services:
       ports:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
-        - "8001:8001"
-        - "8002:8002"
-        - "8003:8003"
-        - "8004:8004"
-        - "8005:8005"
-        - "8006:8006"
-        - "8007:8007"
-        - "8008:8008"
-        - "8009:8009"
       depends_on:
         - php-fpm
       networks:
@@ -220,7 +211,7 @@ services:
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
-        - ./php-worker/supervisord.d:/etc/supervisord.d
+        - ./php-worker/supervisord.d:/etc/supervisor/conf.d
       depends_on:
         - php-fpm
       extra_hosts:
