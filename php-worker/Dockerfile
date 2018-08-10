@@ -14,14 +14,12 @@ FROM bluepolaris/php72:v1.0.5
 #
 
 # Add supervisord.conf
-#COPY supervisord.conf /etc/supervisord.conf
+COPY supervisord.conf /etc/supervisor/supervisord.conf
+
 
 USER root
 
-RUN chmod -R 777 /etc/supervisor
-
-
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
+ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]
 
 #
 #--------------------------------------------------------------------------

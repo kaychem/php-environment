@@ -211,7 +211,6 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
         - ./php-worker/supervisord.d:/etc/supervisor/conf.d
-        - ./supervisord.conf:/etc/supervisord.conf
       ports:
         - "${PHP_SWOOLE_PORT}:9501"
       depends_on:
