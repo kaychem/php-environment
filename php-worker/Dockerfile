@@ -14,7 +14,7 @@ FROM bluepolaris/php72:v1.0.5
 #
 
 # Add supervisord.conf
-COPY supervisord.conf /etc/supervisord.conf
+#COPY supervisord.conf /etc/supervisord.conf
 
 USER root
 
