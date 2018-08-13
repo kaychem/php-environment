@@ -91,6 +91,8 @@ services:
          - "${RABBITMQ_MANAGEMENT_HTTP_HOST_PORT}:15672"
          - "${RABBITMQ_MANAGEMENT_HTTPS_HOST_PORT}:15671"
       privileged: true
+      volumes:
+      - ${RABBITMQ_DATA_PATH}:/var/lib/rabbitmq
       environment:
          - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
          - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
