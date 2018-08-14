@@ -16,11 +16,23 @@ FROM bluepolaris/php72:v1.0.5
 # Add supervisord.conf
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
+###########################################################################
+# Crontab
+###########################################################################
+
+USER root
+
+COPY ./crontab /etc/cron.d
+
+RUN chmod -R 644 /etc/cron.d
+
 
 USER root
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]
 
+
+RUN usermod -u 1000 www-data
 #
 #--------------------------------------------------------------------------
 # Check PHP version

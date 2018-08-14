@@ -28,7 +28,6 @@ services:
         - ./php-fpm/php72.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${APP_PACKAGE_PATH}:${APP_PACKAGE_PATH_CONTAINER}
-        - ./php-fpm/supervisord.d/:/etc/supervisord.d/
       expose:
         - "9000"
       ports:
@@ -77,8 +76,6 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:8080"
         - "${NGINX_HOST_HTTPS_PORT}:4433"
         - "9901:9901"
-      depends_on:
-        - php-fpm
       networks:
         - frontend
         - backend
@@ -96,8 +93,6 @@ services:
       environment:
          - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
          - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
-      depends_on:
-         - php-fpm
       networks:
          - backend
 
@@ -215,8 +210,6 @@ services:
         - ./php-worker/supervisord.d:/etc/supervisor/conf.d
       ports:
         - "${PHP_SWOOLE_PORT}:9501"
-      depends_on:
-        - php-fpm
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       networks:

@@ -23,7 +23,7 @@ COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY ./composer.json /home/laradock/.composer/composer.json
 
 # Add supervisord.conf
-COPY supervisord.conf /etc/supervisord.conf
+#COPY supervisord.conf /etc/supervisord.conf
 
 USER root
 
